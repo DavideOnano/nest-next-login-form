@@ -1,51 +1,38 @@
-import { Link } from "@nextui-org/link";
-import { Snippet } from "@nextui-org/snippet";
-import { Code } from "@nextui-org/code"
-import { button as buttonStyles } from "@nextui-org/theme";
-import { siteConfig } from "@/config/site";
+'use client'
 import { title, subtitle } from "@/components/primitives";
-import { GithubIcon } from "@/components/icons";
+import TextInput from "@/components/input";
+import ButtonCmp from "@/components/button";
+import { useCallback } from "react";
 
 export default function Home() {
+
+	const handleClick = useCallback(
+		() => {
+			//TODO add login/registration logic
+			console.log('click')
+		},
+		[],
+	)
+	
 	return (
 		<section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
 			<div className="inline-block max-w-lg text-center justify-center">
-				<h1 className={title()}>Make&nbsp;</h1>
-				<h1 className={title({ color: "violet" })}>beautiful&nbsp;</h1>
+				<h1 className={title()}>Login/Registration&nbsp;</h1>
+				<h1 className={title({ color: "violet" })}>template.&nbsp;</h1>
 				<br />
 				<h1 className={title()}>
-					websites regardless of your design experience.
+					Made with ReactJS and NestJS.
 				</h1>
 				<h2 className={subtitle({ class: "mt-4" })}>
-					Beautiful, fast and modern React UI library.
+					By Davide Onano.
 				</h2>
 			</div>
 
-			<div className="flex gap-3">
-				<Link
-					isExternal
-					href={siteConfig.links.docs}
-					className={buttonStyles({ color: "primary", radius: "full", variant: "shadow" })}
-				>
-					Documentation
-				</Link>
-				<Link
-					isExternal
-					className={buttonStyles({ variant: "bordered", radius: "full" })}
-					href={siteConfig.links.github}
-				>
-					<GithubIcon size={20} />
-					GitHub
-				</Link>
+			<div className="flex flex-col gap-3 w-6/12 ">
+				<TextInput type="email" label="Email" placeholder="Enter your email" />
+				<TextInput type="password" label="Password" placeholder="Enter your password" />
 			</div>
-
-			<div className="mt-8">
-				<Snippet hideSymbol hideCopyButton variant="flat">
-					<span>
-						Get started by editing <Code color="primary">app/page.tsx</Code>
-					</span>
-				</Snippet>
-			</div>
+			<ButtonCmp onPress={handleClick} className="hover:bg-grey-500" variant="ghost" color="success"></ButtonCmp>
 		</section>
 	);
 }
