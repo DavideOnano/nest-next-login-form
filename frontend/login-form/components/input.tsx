@@ -5,12 +5,14 @@ type InputProps = {
   type: string,
   label: string,
   placeholder?: string,
+  onChange: any
 };
 
 const TextInput = (props: InputProps) => {
+  //Test push email
   return (
     <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-      <Input type={props.type} label={props.label} placeholder={props.placeholder} />
+      <Input onChange={props.onChange} type={props.type} label={props.label} placeholder={props.placeholder} />
     </div>
   )
 }
